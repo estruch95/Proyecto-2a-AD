@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libros>
+	<libro>
+		<titulo>Libro1</titulo>
+		<autor>Ivan Estruch</autor>
+		<publicacion>1995</publicacion>
+		<editor>Anaya</editor>
+		<paginas>365</paginas>
+	</libro>
+	
+	<libro>
+		<titulo>Libro2</titulo>
+		<autor>Joaquin Bahamonde</autor>
+		<publicacion>1997</publicacion>
+		<editor>Anaya</editor>
+		<paginas>230</paginas>
+	</libro>
+</libros>
