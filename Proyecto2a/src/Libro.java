@@ -1,22 +1,23 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Libro implements Serializable{
 	//Atributos de la clase Libro
 	private String titulo;
-	private String autor;
-	private int publicacion;
+	private int año;
+	private ArrayList<String> autores;
 	private String editor;
 	private int paginas;
 	
 	//Parametros que recibe el constructor de la clase libro
-	public Libro(String t, String a, int pu, String e, int pa) {
+	public Libro(String t, int año, ArrayList<String> a, String e, int pa) {
 		// TODO Auto-generated constructor stub
-		titulo = t;
-		autor = a;
-		publicacion = pu;
-		editor = e;
-		paginas = pa;
+		this.titulo = t;
+		this.año = año;
+		this.autores = a;
+		this.editor = e;
+		this.paginas = pa;
 	}
 
 	//Getters y Setters de los atributos de la clase Libro
@@ -29,20 +30,20 @@ public class Libro implements Serializable{
 		this.titulo = titulo;
 	}
 
-	public String getAutor() {
-		return autor;
+	public int getAño() {
+		return año;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setAño(int año) {
+		this.año = año;
 	}
 
-	public int getPublicacion() {
-		return publicacion;
+	public ArrayList<String> getAutores() {
+		return autores;
 	}
 
-	public void setPublicacion(int publicacion) {
-		this.publicacion = publicacion;
+	public void setAutores(ArrayList<String> autores) {
+		this.autores = autores;
 	}
 
 	public String getEditor() {

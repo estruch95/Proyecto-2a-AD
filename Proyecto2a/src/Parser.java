@@ -74,16 +74,31 @@ public class Parser {
 	public Libro getLibro(Element elementoLibro){
 		//Para el elemento libro recibido por parámetro RECOGER TODOS SUS DATOS (ATRIBUTOS)
 		String titulo = getTextValue(elementoLibro, "titulo");
-		String autor = getTextValue(elementoLibro, "autor");
-		int publicacion = getIntValue(elementoLibro, "publicacion");
+		int año = getIntAttributeValue(elementoLibro, "titulo", "anyo");
+		ArrayList<String> autores = getNombresAutor(elementoLibro, "autor", "nombre");
 		String editor = getTextValue(elementoLibro, "editor");
 		int paginas = getIntValue(elementoLibro, "paginas");
 		
 		//Creamos un nuevo objeto Libro con los atributos recogidos del elemento recibido
-		Libro nuevoLibro = new Libro(titulo,autor,publicacion,editor,paginas);
+		Libro nuevoLibro = new Libro(titulo, año, autores, editor, paginas);
 		
 		//Devolvemos el objeto Libro creado y seteado correctamente
 		return nuevoLibro;
+	}
+	
+	public int getIntAttributeValue(Element element, String tag, String attribute){
+		int i = -1;
+		NodeList list = element.getElementsByTagName(tag);
+		if(list != null && list.getLength() > 0){
+			Element e = (Element) list.item(0);
+			String value = e.getAttribute(attribute);
+			try{
+				i = Integer.parseInt(value);
+			}catch(NumberFormatException ex){
+				i = -1;
+			}
+		}
+		return i;
 	}
 	
 	//Este método a partir de un elemento y un tag nos devuelve el valor de dicho elemento
@@ -102,6 +117,19 @@ public class Parser {
 	public int getIntValue(Element elemento, String tagName){
 		return Integer.parseInt(getTextValue(elemento, tagName));
 	}
+	
+	public ArrayList<String> getNombresAutor(Element libroEle, String autor, String nombre){
+		ArrayList<String> nombres = new ArrayList<String>();
+		NodeList list = libroEle.getElementsByTagName(autor);
+		if(list != null && list.getLength() > 0){
+			for(int i = 0; i < list.getLength(); i++){
+				Element elementNombre = (Element) list.item(i);
+				String nom = getTextValue(elementNombre, nombre);
+				nombres.add(nom);
+			}
+		}
+		return nombres;
+	}
 
 	//Método cuya función es realizar un impreso por consola
 	public void print(){
@@ -110,8 +138,9 @@ public class Parser {
 		while(it.hasNext()){
 			Libro libro = (Libro) it.next();
 			System.out.println("Titulo: "+libro.getTitulo());
-			System.out.println("Autor: "+libro.getAutor());
-			System.out.println("Publicacion: "+libro.getPublicacion());
+			System.out.println("Año: "+libro.getAño());
+			System.out.println("Autor1: "+libro.getAutores().get(0));
+			//System.out.println("Autor2: "+libro.getAutores().get(1));
 			System.out.println("Editor: "+libro.getEditor());
 			System.out.println("Paginas: "+libro.getPaginas());
 			System.out.println("------------------------------");

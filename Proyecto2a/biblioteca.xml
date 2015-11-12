@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<libros>
+<biblioteca>
 	<libro>
-		<titulo>Libro1</titulo>
-		<autor>Ivan Estruch</autor>
-		<publicacion>1995</publicacion>
-		<editor>Anaya</editor>
-		<paginas>365</paginas>
+		<titulo anyo="2008">Introduction to Linux</titulo>
+		<autor>
+		    <nombre>Machtelt</nombre> 
+		    <nombre>Garrels</nombre>		 
+		</autor>
+		<editor>O'Reilly</editor>
+		<paginas>256</paginas>
 	</libro>
-	
 	<libro>
-		<titulo>Libro2</titulo>
-		<autor>Joaquin Bahamonde</autor>
-		<publicacion>1997</publicacion>
-		<editor>Anaya</editor>
-		<paginas>230</paginas>
+		<titulo anyo="1991">El lenguaje de programación C</titulo>
+		<autor>
+		    <nombre>Kernighan</nombre> 
+		    <nombre>Ritchie</nombre>
+		</autor>
+		<editor>Prentice Hall</editor>
+		<paginas>294</paginas>
 	</libro>
-</libros>
+</biblioteca>
