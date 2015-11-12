@@ -118,15 +118,19 @@ public class Parser {
 		return Integer.parseInt(getTextValue(elemento, tagName));
 	}
 	
+	//Método encargado de obtener los nombres de los autores
 	public ArrayList<String> getNombresAutor(Element libroEle, String autor, String nombre){
 		ArrayList<String> nombres = new ArrayList<String>();
 		NodeList list = libroEle.getElementsByTagName(autor);
 		if(list != null && list.getLength() > 0){
-			for(int i = 0; i < list.getLength(); i++){
-				Element elementNombre = (Element) list.item(i);
-				String nom = getTextValue(elementNombre, nombre);
-				nombres.add(nom);
-			}
+				Element elementNombre = (Element) list.item(0);
+				NodeList listNombre = elementNombre.getElementsByTagName(nombre);
+				for(int i = 0;i<listNombre.getLength();i++){
+					Element e = (Element) listNombre.item(i);
+					String nom = e.getTextContent();
+					nombres.add(nom);	
+				}
+				
 		}
 		return nombres;
 	}
@@ -140,7 +144,7 @@ public class Parser {
 			System.out.println("Titulo: "+libro.getTitulo());
 			System.out.println("Año: "+libro.getAño());
 			System.out.println("Autor1: "+libro.getAutores().get(0));
-			//System.out.println("Autor2: "+libro.getAutores().get(1));
+			System.out.println("Autor2: "+libro.getAutores().get(1));
 			System.out.println("Editor: "+libro.getEditor());
 			System.out.println("Paginas: "+libro.getPaginas());
 			System.out.println("------------------------------");

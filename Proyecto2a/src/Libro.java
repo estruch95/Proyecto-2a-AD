@@ -62,9 +62,13 @@ public class Libro implements Serializable{
 		this.paginas = paginas;
 	}
 	
-	//Método cuya función es imprimir por consola el título del objeto Libro
+	//Método cuya función es imprimir por consola los datos de dicho libro
 	public void print(){
-		System.out.println("Titulo: "+this.getTitulo());
+		System.out.print("Título "+titulo+", autor");
+		for (String string : autores) {
+			System.out.print(" "+string);
+		}
+		System.out.println(", año "+año+", editor "+editor+" y número de páginas "+this.getPaginas());
 	}
 
 }
